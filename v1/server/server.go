@@ -179,13 +179,16 @@ func (a *Server) Start(address string) error {
 		return result
 	}, true, "session")
 
-	a.Log.Info("Starting server " + a.Address + ". Registered functions are: " + strings.Join(func() []string {
-		ret := []string{}
-		for k, _ := range a.rpcObject.Fns {
-			ret = append(ret, k)
-		}
-		return ret
-	}(), ", "))
+	a.Log.Info("Starting server " + a.Address)
+	/*
+		a.Log.Info("Starting server " + a.Address + ". Registered functions are: " + strings.Join(func() []string {
+			ret := []string{}
+			for k, _ := range a.rpcObject.Fns {
+				ret = append(ret, k)
+			}
+			return ret
+		}(), ", "))
+	*/
 
 	a.rpcServer = rpc.NewServer()
 	a.rpcServer.Register(a.rpcObject)

@@ -46,7 +46,7 @@ func (r *Rpc) Do(in toolkit.M, out *toolkit.Result) error {
 	}
 
 	//in.Set("rpc", r)
-	method := in.GetString("method")
+	method := strings.ToLower(in.GetString("method"))
 	if method == "" {
 		return errors.New("Method is empty")
 	}
